@@ -11,13 +11,6 @@ Video Aspect Ratio: 0
 Video Zoom: 8
 YCbCr Matrix: TV.601
 
-[Aegisub Project Garbage]
-Export Encoding: Unicode (UTF-8)
-Last Style Storage: 淡岛百景
-Video Zoom Percent: 0.625000
-Active Line: 1034
-Video Position: 33230
-
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: 注释,Source Han Sans SC Medium,50,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,1.5,0.5,7,20,20,20,1
