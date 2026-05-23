@@ -16,10 +16,10 @@ Audio File: [SubsPlease] Awajima Hyakkei - 07 (1080p) [C3593C43]_neenc.mp4
 Video File: [SubsPlease] Awajima Hyakkei - 07 (1080p) [C3593C43]_neenc.mp4
 Video AR Mode: 4
 Video AR Value: 1.777778
-Video Zoom Percent: 0.750000
-Scroll Position: 114
-Active Line: 122
-Video Position: 21493
+Video Zoom Percent: 0.625000
+Scroll Position: 240
+Active Line: 4
+Video Position: 20444
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
@@ -45,8 +45,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 4,0:08:29.52,0:08:34.40,场面文本,Text,0,0,0,,{\blur0.9\fs30\an1\fn方正准雅宋_GBK\b1\bord0\shad0\c&H524642&\pos(637.34,542)\frx0\fry4\frz21.48\clip(m 800.8 409.6 l 795.2 428.8 792.8 443.2 791.2 462.4 793.6 486.4 609.6 564.8 582.4 429.6)}淡岛歌剧新作公演\N最速报道
 Dialogue: 4,0:13:46.01,0:13:48.01,场面文本,Text,0,0,0,,{\shad0\alpha50\bord2\an9\p1\fscx155\fscy535\c&HDFE1E1&\3c&H54555A&\pos(1910,8)}m0 0 l 0 100 100 100 100 0
 Dialogue: 5,0:13:46.01,0:13:48.01,场面文本,Text,0,0,0,,{\fs70\frz270\an1\fn@方正准雅宋_GBK\bord0\shad0\c&H403C49&\pos(1768.67,27.33)}未来的首席候补\N退出淡岛・长期疗养
-Dialogue: 0,0:10:23.34,0:10:26.94,注释,Student A 要不要写英文,0,0,0,,注：「ダブルキャスト」指在舞台剧等中由两个人轮流出演同一个角色
-Dialogue: 0,0:14:12.66,0:14:14.83,注释,Kayo,0,0,0,,注：「千秋楽」指相扑、歌舞伎和舞台剧等公演的最终日\N有时也略称为「楽」
+Dialogue: 0,0:10:23.62,0:10:25.16,注释,Student A 要不要写英文,0,0,0,,注：「ダブルキャスト」指在舞台剧等中由两个人轮流出演同一个角色
+Dialogue: 0,0:14:12.98,0:14:15.04,注释,Kayo,0,0,0,,注：「千秋楽」指相扑、歌舞伎和舞台剧等公演的最终日\N有时也略称为「楽」
 Dialogue: 1,0:08:04.02,0:08:05.33,淡岛_对白 中文,Sakiko,0,0,0,,你刚刚在看什么？
 Dialogue: 1,0:08:05.33,0:08:06.50,淡岛_对白 中文,Mikako,0,0,0,,飞机
 Dialogue: 1,0:08:06.50,0:08:07.57,淡岛_对白 中文,Sakiko,0,0,0,,对哦
