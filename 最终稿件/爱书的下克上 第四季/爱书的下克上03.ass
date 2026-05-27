@@ -12,6 +12,7 @@ ScaledBorderAndShadow: yes
 YCbCr Matrix: TV.709
 
 [Aegisub Project Garbage]
+Last Style Storage: TSDM标准样式
 Audio File: 下克上_03_代理.mp4
 Video File: 下克上_03_代理.mp4
 Video AR Mode: 4
@@ -24,7 +25,7 @@ Video Position: 29144
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: 声明,Source Han Sans SC Medium,40,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,1.5,0.5,8,10,10,10,1
-Style: 对白 日语,华文中宋,45,&H00FFFFFF,&H00000000,&H00828C50,&H00000000,-1,0,0,0,100,100,0,0,1,1.5,0,2,10,10,20,1
+Style: 对白 日语,华文中宋,45,&H00FFFFFF,&H00000000,&H00828C50,&H00000000,-1,0,0,0,100,100,0,0,1,1.5,0,2,0,0,12,1
 Style: 对白 中文,华文中宋,58,&H00FFFFFF,&H00FFFFFF,&H00828C50,&H00000000,-1,0,0,0,100,100,3,0,1,2,0,2,10,10,60,1
 Style: 场面文本,Source Han Sans SC Medium,48,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,1,0.2,2,10,10,10,1
 Style: 章节,方正中雅宋_GBK,155,&H00341F8D,&H00000000,&H00000000,&H00050927,0,0,0,0,100,100,23,0,1,0,2,5,10,10,10,1
