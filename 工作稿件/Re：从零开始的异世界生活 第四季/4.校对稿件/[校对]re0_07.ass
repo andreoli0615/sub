@@ -16,8 +16,6 @@ Video File: E:/汉化/番剧/07.mkv
 Video AR Mode: 4
 Video AR Value: 1.777778
 Video Zoom Percent: 0.625000
-Scroll Position: 681
-Active Line: 693
 Video Position: 30858
 
 [V4+ Styles]
@@ -58,6 +56,7 @@ Style: 歌词 日语 - RAP,华文中宋,45,&H00FFFFFF,&H00000000,&H00030569,&H00
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:07.00,Credit,,0,0,0,,{\b0}本字幕由 {\b1\c&H00FFFF&}TSDM字幕组{\b1\c&HFFFFFF&} {\b0}制作  仅供学习与交流使用  禁止任何形式的商业用途{\b0}\N{\b1}听译{\b0} 三三子 饺子 R. {\b1}时轴{\b0} aoch1zaq 罗伊 半价薯片 {\b1}校对 {\b0}AuroraAkie {\b1}后期{\b0} - {\b1}压制{\b0} - {\b1}监制{\b0} 雍
 Comment: 0,0:00:01.00,0:00:04.00,对白 日语,,0,0,0,,part1
 Dialogue: 0,0:00:04.11,0:00:07.61,对白 日语,Emilia,0,0,0,,ユリウスはちゃんとここで傷が治るまで休んでること
 Dialogue: 1,0:00:04.11,0:00:07.61,对白 中文,Emilia,0,0,0,,由里乌斯你要先在这里乖乖地把伤养好
