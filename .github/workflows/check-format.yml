@@ -9,6 +9,9 @@ name: 对白格式检查（提醒）
 #
 # 这是「提醒」而非「拦截」：警告不会让检查变红、不会阻止合并。
 #
+# 也支持在 Actions 页面手动触发（workflow_dispatch），此时全量扫描仓库内所有 .ass，
+# 结果写入运行摘要，供收尾/自查使用。
+#
 # 规则来源：对已发布稿件（无职转生S3 01-07 终稿，4678 条对白行）的统计——
 #   对白轨全角空格近乎为 0；中文全角 ？！ 569 处 vs 半角 ?! 42 处。
 # 注意：各项目规则可能有差异，本检查只覆盖上述两条跨项目共识项。
@@ -16,13 +19,16 @@ name: 对白格式检查（提醒）
 on:
   pull_request:
     paths: ['**.ass']
+  workflow_dispatch:        # 手动触发：全量扫描（见文件末尾 scan-all job）
 
 permissions:
   contents: read           # 读取 diff
   pull-requests: write     # 在 PR 对话区发/改/删评论
 
 jobs:
+  # —— PR 触发：只查本次新增的对白行，发/更新粘性评论 ——
   check:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -75,3 +81,30 @@ jobs:
               await github.rest.issues.deleteComment(
                 { owner, repo, comment_id: mine.id });
             }
+
+  # —— 手动触发：全量扫描仓库内所有 .ass，结果写入运行摘要 ——
+  scan-all:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 全量扫描（仅提醒，历史稿件允许有命中）
+        run: |
+          {
+            echo '### 全量格式扫描'
+            echo
+            echo '> 含历史稿件，命中不一定是本次改动引入的；仅供收尾/自查参考。'
+            echo
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # --all 会递归扫描当前目录下所有 .ass；退出码非 0（有命中）不算失败
+          python tools/check_format.py --all \
+            | tee /tmp/format_all.txt \
+            && true || true
+          head -n 200 /tmp/format_all.txt >> "$GITHUB_STEP_SUMMARY" || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
