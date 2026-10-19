@@ -1,0 +1,77 @@
+name: 对白格式检查（提醒）
+
+# 开 PR 时，检查本次「新增的对白行」是否符合组内全角/半角惯例：
+#   1) 断句应使用半角空格，不应出现全角空格 U+3000；
+#   2) 中文对白不应使用半角 ? !（应为全角 ？！）。
+#
+# 只检查「对白」系样式；歌词、注释、标题、声明、场面文本等一律跳过
+# （部分项目在这些轨道特意使用标点，不适合一刀切）。
+#
+# 这是「提醒」而非「拦截」：警告不会让检查变红、不会阻止合并。
+#
+# 规则来源：对已发布稿件（无职转生S3 01-07 终稿，4678 条对白行）的统计——
+#   对白轨全角空格近乎为 0；中文全角 ？！ 569 处 vs 半角 ?! 42 处。
+# 注意：各项目规则可能有差异，本检查只覆盖上述两条跨项目共识项。
+
+on:
+  pull_request:
+    paths: ['**.ass']
+
+permissions:
+  contents: read           # 读取 diff
+  pull-requests: write     # 在 PR 对话区发/改/删评论
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 需要完整历史才能和 base 分支求 diff
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 检查新增对白行的全角/半角
+        id: check
+        env:
+          # 评论里的定位链接需要 PR 源分支的 commit
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          # core.quotePath=false 让中文文件名在 diff 里保持原样，定位才正确
+          git -c core.quotePath=false diff --unified=0 "$base...$head" -- '*.ass' \
+            | python tools/check_format.py --diff
+
+      - name: 发布/更新/删除 PR 提醒评论
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- format-check -->';
+            const count = parseInt('${{ steps.check.outputs.count }}' || '0', 10);
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+
+            // 找出本机器人之前发过的那条评论（带 marker）
+            const comments = await github.paginate(
+              github.rest.issues.listComments, { owner, repo, issue_number });
+            const mine = comments.find(c => c.body && c.body.includes(marker));
+
+            if (count > 0) {
+              const body = fs.readFileSync('format_comment.md', 'utf8');
+              if (mine) {
+                await github.rest.issues.updateComment(
+                  { owner, repo, comment_id: mine.id, body });
+              } else {
+                await github.rest.issues.createComment(
+                  { owner, repo, issue_number, body });
+              }
+            } else if (mine) {
+              // 已无问题：删掉旧提醒，保持对话整洁
+              await github.rest.issues.deleteComment(
+                { owner, repo, comment_id: mine.id });
+            }
